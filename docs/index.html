@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="x.css">
     <style>
-    #divLyrics > pre { white-space:pre-wrap;margin:0;padding:0; overflow: }
+    #divLyrics > pre { white-space:pre-wrap;margin:0;padding:0; transition: background-color 0.4s ease; }
+    .hl { background: #933;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+             0 0 20px rgba(255, 255, 255, 0.6); 
+    }
     </style>
     <title>Racing in the street</title>
 </head>
@@ -146,19 +150,17 @@ Combine the two tracks: Bruce's isolated voice and your newly written piano sect
 
 <footer></footer>
 
-
 <script>
-  // highlights the text of the interview   
   document.getElementById('au0').ontimeupdate = function(e) {
     const t = au0.currentTime;
-    divL0.style.outline = divL1.style.outline = divL2.style.outline = divL3.style.outline = '';
-    if      ( t < 0.5)        ; 
-    else if ( t < 6)          divL0.style.outline = '1px solid orange';
-    else if ( t < 12)         divL1.style.outline = '1px solid orange';
-    else if ( t < 17)         divL2.style.outline = '1px solid orange';
-    else if ( t < 22)         divL3.style.outline = '1px solid orange';
-  }
-  </script>
+    divL0.className = divL1.className = divL2.className = divL3.className = '';
+    if      (t < 0.5)         ; // No action
+    else if (t < 6)           divL0.className = 'hl';
+    else if (t < 12)          divL1.className = 'hl';
+    else if (t < 17)          divL2.className = 'hl';
+    else if (t < 22)          divL3.className = 'hl';
+}
+</script>
 </body>
 </html>
 
